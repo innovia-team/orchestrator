@@ -1,0 +1,627 @@
+﻿<syncfusion:ChromelessWindow 
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HitBtcOrchestrator"
+        xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
+        x:Class="HitBtcOrchestrator.MainWindow"
+        mc:Ignorable="d" WindowStartupLocation="CenterScreen" WindowState="Maximized"
+        Title="HitBtcOrchestrator | pre-alpha" DataContext="{Binding ViewModel, RelativeSource={RelativeSource Self}}" Icon="elegant-director.ico">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.95*"/>
+
+            <RowDefinition Height="0.05*"/>
+        </Grid.RowDefinitions>
+
+
+        <syncfusion:DockingManager x:Name="DockingManager1" EnableDocumentTabHeaderEdit="True" UseDocumentContainer="True" ContainerMode="TDI"  >
+            <ContentControl  syncfusion:DockingManager.State="Document" x:Name="BtcUsdGrid">
+                <syncfusion:DockingManager.Header>
+                    <StackPanel>
+                        <TextBlock HorizontalAlignment="Center" Text="BTC/USD"/>
+
+                        <TextBlock FontSize="7" Text="{Binding BtcUsdCurrentAvgPrice.TotalAskCoin, Converter={StaticResource FloatConverter}}" />
+                        <TextBlock FontSize="7" Text="{Binding BtcUsdCurrentAvgPrice.AvgAskCoinPrice, Converter={StaticResource FloatConverter}}"/>
+                        <TextBlock FontSize="7" Text="{Binding BtcUsdCurrentAvgPrice.TotalBidCoin, Converter={StaticResource FloatConverter}}" />
+                        <TextBlock FontSize="7" Text="{Binding BtcUsdCurrentAvgPrice.AvgBidCoinPrice, Converter={StaticResource FloatConverter}}" />
+
+                    </StackPanel>
+
+                </syncfusion:DockingManager.Header>
+                <StackPanel Orientation="Vertical" VerticalAlignment="Stretch">
+                    <Label HorizontalAlignment="Center" Content="BTCUSD"/>
+                    <StackPanel Orientation="Horizontal">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Row="0" Grid.Column="0" FontSize="9" Content="Min Ask"/>
+                            <Label Grid.Row="1" Grid.Column="0" FontSize="9" Content="Max Ask"/>
+                            <Label Grid.Row="2" Grid.Column="0" FontSize="9" Content="Min Bid"/>
+                            <Label Grid.Row="3" Grid.Column="0" FontSize="9" Content="Max Bid"/>
+
+                            <TextBox MinWidth="100" Grid.Row="0" Grid.Column="1" Text="{Binding BtcUsdMinAskValue, Converter={StaticResource FloatConverter}, Mode=TwoWay}" />
+                            <TextBox MinWidth="100" Grid.Row="1" Grid.Column="1" Text="{Binding BtcUsdMaxAskValue, Converter={StaticResource FloatConverter}, Mode=TwoWay}"/>
+                            <TextBox MinWidth="100" Grid.Row="2" Grid.Column="1" Text="{Binding BtcUsdMinBidValue, Converter={StaticResource FloatConverter}, Mode=TwoWay}" />
+                            <TextBox MinWidth="100" Grid.Row="3" Grid.Column="1" Text="{Binding BtcUsdMaxBidValue, Converter={StaticResource FloatConverter}, Mode=TwoWay}" />
+
+                        </Grid>
+                        <Grid DataContext="{Binding ViewModel, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:MainWindow}}}">
+                            <Grid DataContext="{Binding BtcUsdCurrentAvgPrice}">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0" Grid.Column="0" FontSize="9" Content="Ask Qty"/>
+                                <Label Grid.Row="1" Grid.Column="0" FontSize="9" Content="Ask Avg"/>
+                                <Label Grid.Row="2" Grid.Column="0" FontSize="9" Content="Bid Qty"/>
+                                <Label Grid.Row="3" Grid.Column="0" FontSize="9" Content="Bid Avg"/>
+
+                                <TextBox MinWidth="100" Grid.Row="0" Grid.Column="1" Text="{Binding TotalAskCoin, Converter={StaticResource FloatConverter}, Mode=TwoWay}" />
+                                <TextBox MinWidth="100" Grid.Row="1" Grid.Column="1" Text="{Binding AvgAskCoinPrice, Converter={StaticResource FloatConverter}, Mode=TwoWay}"/>
+                                <TextBox MinWidth="100" Grid.Row="2" Grid.Column="1" Text="{Binding TotalBidCoin, Converter={StaticResource FloatConverter}, Mode=TwoWay}" />
+                                <TextBox MinWidth="100" Grid.Row="3" Grid.Column="1" Text="{Binding AvgBidCoinPrice, Converter={StaticResource FloatConverter}, Mode=TwoWay}" />
+                            </Grid>
+                        </Grid>
+                        <Grid DataContext="{Binding ViewModel, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:MainWindow}}}">
+                            <Grid DataContext="{Binding BtcUsdCurrentAvgPrice}">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0" Grid.Column="0" FontSize="9" Content="Min Ask"/>
+                                <Label Grid.Row="1" Grid.Column="0" FontSize="9" Content="Max Ask"/>
+                                <Label Grid.Row="2" Grid.Column="0" FontSize="9" Content="Min Bid"/>
+                                <Label Grid.Row="3" Grid.Column="0" FontSize="9" Content="Max Bid"/>
+
+                                <TextBox MinWidth="100" Grid.Row="0" Grid.Column="1" Text="{Binding MinAskCoinPrice, Converter={StaticResource FloatConverter}, Mode=TwoWay}" />
+                                <TextBox MinWidth="100" Grid.Row="1" Grid.Column="1" Text="{Binding MaxAskCoinPrice, Converter={StaticResource FloatConverter}, Mode=TwoWay}"/>
+                                <TextBox MinWidth="100" Grid.Row="2" Grid.Column="1" Text="{Binding MinBidCoinPrice, Converter={StaticResource FloatConverter}, Mode=TwoWay}" />
+                                <TextBox MinWidth="100" Grid.Row="3" Grid.Column="1" Text="{Binding MaxBidCoinPrice, Converter={StaticResource FloatConverter}, Mode=TwoWay}" />
+                            </Grid>
+                        </Grid>
+
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                            <Label Content="Ask Filtered Wall"></Label>
+                            <syncfusion:SfDataGrid BorderThickness="0" BorderBrush="Transparent" AllowSorting="True" ColumnSizer="Auto" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch"  AutoGenerateColumns="False" ItemsSource="{Binding  BtcUsdCurrentAvgPrice.ask}" MinHeight="300" >
+                                <syncfusion:SfDataGrid.Columns>
+                                    <syncfusion:GridNumericColumn NumberDecimalDigits="7" HeaderText="Value" MappingName="price" />
+                                    <syncfusion:GridTextColumn HeaderText="Qty" MappingName="size" />
+                                    <syncfusion:GridTextColumn HeaderText="Impact" MappingName="PercentImpact" />
+                                    <syncfusion:GridNumericColumn NumberDecimalDigits="7" HeaderText="Total Value" MappingName="TotalValue" />
+
+                                </syncfusion:SfDataGrid.Columns>
+                            </syncfusion:SfDataGrid>
+
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                            <Label Content="Bid Filtered Wall"></Label>
+                            <syncfusion:SfDataGrid BorderThickness="0" BorderBrush="Transparent" AllowSorting="True" ColumnSizer="Auto" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch"  AutoGenerateColumns="False" ItemsSource="{Binding  BtcUsdCurrentAvgPrice.bid}" MinHeight="300" >
+                                <syncfusion:SfDataGrid.Columns>
+                                    <syncfusion:GridNumericColumn NumberDecimalDigits="7" HeaderText="Value" MappingName="price" />
+                                    <syncfusion:GridTextColumn HeaderText="Qty" MappingName="size" />
+                                    <syncfusion:GridTextColumn HeaderText="Impact" MappingName="PercentImpact" />
+                                    <syncfusion:GridNumericColumn NumberDecimalDigits="7" HeaderText="Total Value" MappingName="TotalValue" />
+
+                                </syncfusion:SfDataGrid.Columns>
+                            </syncfusion:SfDataGrid>
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+
+            </ContentControl>
+            <ContentControl  syncfusion:DockingManager.State="Document" x:Name="BtcEurGrid">
+                <syncfusion:DockingManager.Header>
+                    <StackPanel>
+                        <TextBlock HorizontalAlignment="Center" Text="BTC/EUR"/>
+
+                        <TextBlock FontSize="7" Text="{Binding BtcEurCurrentAvgPrice.TotalAskCoin, Converter={StaticResource FloatConverter}}" />
+                        <TextBlock FontSize="7" Text="{Binding BtcEurCurrentAvgPrice.AvgAskCoinPrice, Converter={StaticResource FloatConverter}}"/>
+                        <TextBlock FontSize="7" Text="{Binding BtcEurCurrentAvgPrice.TotalBidCoin, Converter={StaticResource FloatConverter}}" />
+                        <TextBlock FontSize="7" Text="{Binding BtcEurCurrentAvgPrice.AvgBidCoinPrice, Converter={StaticResource FloatConverter}}" />
+
+                    </StackPanel>
+
+                </syncfusion:DockingManager.Header>
+                <StackPanel Orientation="Vertical" VerticalAlignment="Stretch">
+                    <Label HorizontalAlignment="Center" Content="BTCEUR"/>
+                    <StackPanel Orientation="Horizontal">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Row="0" Grid.Column="0" FontSize="9" Content="Min Ask"/>
+                            <Label Grid.Row="1" Grid.Column="0" FontSize="9" Content="Max Ask"/>
+                            <Label Grid.Row="2" Grid.Column="0" FontSize="9" Content="Min Bid"/>
+                            <Label Grid.Row="3" Grid.Column="0" FontSize="9" Content="Max Bid"/>
+
+                            <TextBox MinWidth="100" Grid.Row="0" Grid.Column="1" Text="{Binding BtcEurMinAskValue, Converter={StaticResource FloatConverter}, Mode=TwoWay}" />
+                            <TextBox MinWidth="100" Grid.Row="1" Grid.Column="1" Text="{Binding BtcEurMaxAskValue, Converter={StaticResource FloatConverter}, Mode=TwoWay}"/>
+                            <TextBox MinWidth="100" Grid.Row="2" Grid.Column="1" Text="{Binding BtcEurMinBidValue, Converter={StaticResource FloatConverter}, Mode=TwoWay}" />
+                            <TextBox MinWidth="100" Grid.Row="3" Grid.Column="1" Text="{Binding BtcEurMaxBidValue, Converter={StaticResource FloatConverter}, Mode=TwoWay}" />
+
+                        </Grid>
+                        <Grid DataContext="{Binding ViewModel, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:MainWindow}}}">
+                            <Grid DataContext="{Binding BtcEurCurrentAvgPrice}">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0" Grid.Column="0" FontSize="9" Content="Ask Qty"/>
+                                <Label Grid.Row="1" Grid.Column="0" FontSize="9" Content="Ask Avg"/>
+                                <Label Grid.Row="2" Grid.Column="0" FontSize="9" Content="Bid Qty"/>
+                                <Label Grid.Row="3" Grid.Column="0" FontSize="9" Content="Bid Avg"/>
+
+                                <TextBox MinWidth="100" Grid.Row="0" Grid.Column="1" Text="{Binding TotalAskCoin, Converter={StaticResource FloatConverter}, Mode=TwoWay}" />
+                                <TextBox MinWidth="100" Grid.Row="1" Grid.Column="1" Text="{Binding AvgAskCoinPrice, Converter={StaticResource FloatConverter}, Mode=TwoWay}"/>
+                                <TextBox MinWidth="100" Grid.Row="2" Grid.Column="1" Text="{Binding TotalBidCoin, Converter={StaticResource FloatConverter}, Mode=TwoWay}" />
+                                <TextBox MinWidth="100" Grid.Row="3" Grid.Column="1" Text="{Binding AvgBidCoinPrice, Converter={StaticResource FloatConverter}, Mode=TwoWay}" />
+                            </Grid>
+                        </Grid>
+                        <Grid DataContext="{Binding ViewModel, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:MainWindow}}}">
+                            <Grid DataContext="{Binding BtcEurCurrentAvgPrice}">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0" Grid.Column="0" FontSize="9" Content="Min Ask"/>
+                                <Label Grid.Row="1" Grid.Column="0" FontSize="9" Content="Max Ask"/>
+                                <Label Grid.Row="2" Grid.Column="0" FontSize="9" Content="Min Bid"/>
+                                <Label Grid.Row="3" Grid.Column="0" FontSize="9" Content="Max Bid"/>
+
+                                <TextBox MinWidth="100" Grid.Row="0" Grid.Column="1" Text="{Binding MinAskCoinPrice, Converter={StaticResource FloatConverter}, Mode=TwoWay}" />
+                                <TextBox MinWidth="100" Grid.Row="1" Grid.Column="1" Text="{Binding MaxAskCoinPrice, Converter={StaticResource FloatConverter}, Mode=TwoWay}"/>
+                                <TextBox MinWidth="100" Grid.Row="2" Grid.Column="1" Text="{Binding MinBidCoinPrice, Converter={StaticResource FloatConverter}, Mode=TwoWay}" />
+                                <TextBox MinWidth="100" Grid.Row="3" Grid.Column="1" Text="{Binding MaxBidCoinPrice, Converter={StaticResource FloatConverter}, Mode=TwoWay}" />
+                            </Grid>
+                        </Grid>
+
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                            <Label Content="Ask Filtered Wall"></Label>
+                            <syncfusion:SfDataGrid BorderThickness="0" BorderBrush="Transparent" AllowSorting="True" ColumnSizer="Auto" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch"  AutoGenerateColumns="False" ItemsSource="{Binding  BtcEurCurrentAvgPrice.ask}" MinHeight="300" >
+                                <syncfusion:SfDataGrid.Columns>
+                                    <syncfusion:GridNumericColumn NumberDecimalDigits="7" HeaderText="Value" MappingName="price" />
+                                    <syncfusion:GridTextColumn HeaderText="Qty" MappingName="size" />
+                                    <syncfusion:GridTextColumn HeaderText="Impact" MappingName="PercentImpact" />
+                                    <syncfusion:GridNumericColumn NumberDecimalDigits="7" HeaderText="Total Value" MappingName="TotalValue" />
+
+                                </syncfusion:SfDataGrid.Columns>
+                            </syncfusion:SfDataGrid>
+
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                            <Label Content="Bid Filtered Wall"></Label>
+                            <syncfusion:SfDataGrid BorderThickness="0" BorderBrush="Transparent" AllowSorting="True" ColumnSizer="Auto" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch"  AutoGenerateColumns="False" ItemsSource="{Binding  BtcEurCurrentAvgPrice.bid}" MinHeight="300" >
+                                <syncfusion:SfDataGrid.Columns>
+                                    <syncfusion:GridNumericColumn NumberDecimalDigits="7" HeaderText="Value" MappingName="price" />
+                                    <syncfusion:GridTextColumn HeaderText="Qty" MappingName="size" />
+                                    <syncfusion:GridTextColumn HeaderText="Impact" MappingName="PercentImpact" />
+                                    <syncfusion:GridNumericColumn NumberDecimalDigits="7" HeaderText="Total Value" MappingName="TotalValue" />
+
+                                </syncfusion:SfDataGrid.Columns>
+                            </syncfusion:SfDataGrid>
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+
+            </ContentControl>
+
+            <ContentControl  syncfusion:DockingManager.State="Document" x:Name="EthUsdGrid">
+                <syncfusion:DockingManager.Header>
+                    <StackPanel>
+                        <TextBlock HorizontalAlignment="Center" Text="ETH/USD"/>
+
+                        <TextBlock FontSize="7" Text="{Binding EthUsdCurrentAvgPrice.TotalAskCoin, Converter={StaticResource FloatConverter}}" />
+                        <TextBlock FontSize="7" Text="{Binding EthUsdCurrentAvgPrice.AvgAskCoinPrice, Converter={StaticResource FloatConverter}}"/>
+                        <TextBlock FontSize="7" Text="{Binding EthUsdCurrentAvgPrice.TotalBidCoin, Converter={StaticResource FloatConverter}}" />
+                        <TextBlock FontSize="7" Text="{Binding EthUsdCurrentAvgPrice.AvgBidCoinPrice, Converter={StaticResource FloatConverter}}" />
+
+                    </StackPanel>
+
+                </syncfusion:DockingManager.Header>
+                <StackPanel  Orientation="Vertical" VerticalAlignment="Stretch">
+                    <Label HorizontalAlignment="Center" Content="ETHUSD"/>
+                    <StackPanel Orientation="Horizontal">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Row="0" Grid.Column="0" FontSize="9" Content="Min Ask"/>
+                            <Label Grid.Row="1" Grid.Column="0" FontSize="9" Content="Max Ask"/>
+                            <Label Grid.Row="2" Grid.Column="0" FontSize="9" Content="Min Bid"/>
+                            <Label Grid.Row="3" Grid.Column="0" FontSize="9" Content="Max Bid"/>
+
+                            <TextBox MinWidth="100" Grid.Row="0" Grid.Column="1" Text="{Binding EthUsdMinAskValue, Converter={StaticResource FloatConverter}, Mode=TwoWay}" />
+                            <TextBox MinWidth="100" Grid.Row="1" Grid.Column="1" Text="{Binding EthUsdMaxAskValue, Converter={StaticResource FloatConverter}, Mode=TwoWay}"/>
+                            <TextBox MinWidth="100" Grid.Row="2" Grid.Column="1" Text="{Binding EthUsdMinBidValue, Converter={StaticResource FloatConverter}, Mode=TwoWay}" />
+                            <TextBox MinWidth="100" Grid.Row="3" Grid.Column="1" Text="{Binding EthUsdMaxBidValue, Converter={StaticResource FloatConverter}, Mode=TwoWay}" />
+
+                        </Grid>
+                        <Grid  DataContext="{Binding ViewModel, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:MainWindow}}}" >
+                            <Grid DataContext="{Binding EthUsdCurrentAvgPrice}" >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0" Grid.Column="0" FontSize="9" Content="Ask Qty"/>
+                                <Label Grid.Row="1" Grid.Column="0" FontSize="9" Content="Ask Avg"/>
+                                <Label Grid.Row="2" Grid.Column="0" FontSize="9" Content="Bid Qty"/>
+                                <Label Grid.Row="3" Grid.Column="0" FontSize="9" Content="Bid Avg"/>
+
+                                <TextBox MinWidth="100" Grid.Row="0" Grid.Column="1" Text="{Binding TotalAskCoin, Converter={StaticResource FloatConverter}, Mode=TwoWay}" />
+                                <TextBox MinWidth="100" Grid.Row="1" Grid.Column="1" Text="{Binding AvgAskCoinPrice, Converter={StaticResource FloatConverter}, Mode=TwoWay}"/>
+                                <TextBox MinWidth="100" Grid.Row="2" Grid.Column="1" Text="{Binding TotalBidCoin, Converter={StaticResource FloatConverter}, Mode=TwoWay}" />
+                                <TextBox MinWidth="100" Grid.Row="3" Grid.Column="1" Text="{Binding AvgBidCoinPrice, Converter={StaticResource FloatConverter}, Mode=TwoWay}" />
+                            </Grid>
+                        </Grid>
+                        <Grid  DataContext="{Binding ViewModel, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:MainWindow}}}">
+                            <Grid  DataContext="{Binding EthUsdCurrentAvgPrice}" >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0" Grid.Column="0" FontSize="9" Content="Min Ask"/>
+                                <Label Grid.Row="1" Grid.Column="0" FontSize="9" Content="Max Ask"/>
+                                <Label Grid.Row="2" Grid.Column="0" FontSize="9" Content="Min Bid"/>
+                                <Label Grid.Row="3" Grid.Column="0" FontSize="9" Content="Max Bid"/>
+
+                                <TextBox MinWidth="100" Grid.Row="0" Grid.Column="1" Text="{Binding MinAskCoinPrice, Converter={StaticResource FloatConverter}, Mode=TwoWay}" />
+                                <TextBox MinWidth="100" Grid.Row="1" Grid.Column="1" Text="{Binding MaxAskCoinPrice, Converter={StaticResource FloatConverter}, Mode=TwoWay}"/>
+                                <TextBox MinWidth="100" Grid.Row="2" Grid.Column="1" Text="{Binding MinBidCoinPrice, Converter={StaticResource FloatConverter}, Mode=TwoWay}" />
+                                <TextBox MinWidth="100" Grid.Row="3" Grid.Column="1" Text="{Binding MaxBidCoinPrice, Converter={StaticResource FloatConverter}, Mode=TwoWay}" />
+                            </Grid>
+                        </Grid>
+
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                            <Label Content="Ask Filtered Wall"></Label>
+                            <syncfusion:SfDataGrid BorderThickness="0" BorderBrush="Transparent" AllowSorting="True" ColumnSizer="Auto" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch"  AutoGenerateColumns="False" ItemsSource="{Binding  EthUsdCurrentAvgPrice.ask}" MinHeight="300" >
+                                <syncfusion:SfDataGrid.Columns>
+                                    <syncfusion:GridNumericColumn NumberDecimalDigits="7" HeaderText="Value" MappingName="price" />
+                                    <syncfusion:GridTextColumn HeaderText="Qty" MappingName="size" />
+                                    <syncfusion:GridTextColumn HeaderText="Impact" MappingName="PercentImpact" />
+                                    <syncfusion:GridNumericColumn NumberDecimalDigits="7" HeaderText="Total Value" MappingName="TotalValue" />
+
+                                </syncfusion:SfDataGrid.Columns>
+                            </syncfusion:SfDataGrid>
+
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                            <Label Content="Bid Filtered Wall"></Label>
+                            <syncfusion:SfDataGrid BorderThickness="0" BorderBrush="Transparent" AllowSorting="True" ColumnSizer="Auto" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch"  AutoGenerateColumns="False" ItemsSource="{Binding  EthUsdCurrentAvgPrice.bid}" MinHeight="300" >
+                                <syncfusion:SfDataGrid.Columns>
+                                    <syncfusion:GridNumericColumn NumberDecimalDigits="7" HeaderText="Value" MappingName="price" />
+                                    <syncfusion:GridTextColumn HeaderText="Qty" MappingName="size" />
+                                    <syncfusion:GridTextColumn HeaderText="Impact" MappingName="PercentImpact" />
+                                    <syncfusion:GridNumericColumn NumberDecimalDigits="7" HeaderText="Total Value" MappingName="TotalValue" />
+
+                                </syncfusion:SfDataGrid.Columns>
+                            </syncfusion:SfDataGrid>
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+            </ContentControl>
+            <ContentControl  syncfusion:DockingManager.State="Document" x:Name="EthEurGrid">
+                <syncfusion:DockingManager.Header>
+                    <StackPanel>
+                        <TextBlock HorizontalAlignment="Center" Text="ETH/EUR"/>
+
+                        <TextBlock FontSize="7" Text="{Binding Mode=TwoWay , Path=EthEurCurrentAvgPrice.TotalAskCoin, Converter={StaticResource FloatConverter}}" />
+                        <TextBlock FontSize="7" Text="{Binding Mode=TwoWay , Path=EthEurCurrentAvgPrice.AvgAskCoinPrice, Converter={StaticResource FloatConverter}}"/>
+                        <TextBlock FontSize="7" Text="{Binding Mode=TwoWay , Path=EthEurCurrentAvgPrice.TotalBidCoin, Converter={StaticResource FloatConverter}}" />
+                        <TextBlock FontSize="7" Text="{Binding Mode=TwoWay , Path=EthEurCurrentAvgPrice.AvgBidCoinPrice, Converter={StaticResource FloatConverter}}" />
+
+                    </StackPanel>
+
+                </syncfusion:DockingManager.Header>
+
+                <StackPanel  Orientation="Vertical" VerticalAlignment="Stretch">
+                    <Label HorizontalAlignment="Center" Content="ETHEUR"/>
+                    <StackPanel Orientation="Horizontal">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Row="0" Grid.Column="0" FontSize="9" Content="Min Ask"/>
+                            <Label Grid.Row="1" Grid.Column="0" FontSize="9" Content="Max Ask"/>
+                            <Label Grid.Row="2" Grid.Column="0" FontSize="9" Content="Min Bid"/>
+                            <Label Grid.Row="3" Grid.Column="0" FontSize="9" Content="Max Bid"/>
+
+                            <TextBox MinWidth="100" Grid.Row="0" Grid.Column="1" Text="{Binding EthEurMinAskValue, Converter={StaticResource FloatConverter}, Mode=TwoWay}" />
+                            <TextBox MinWidth="100" Grid.Row="1" Grid.Column="1" Text="{Binding EthEurMaxAskValue, Converter={StaticResource FloatConverter}, Mode=TwoWay}"/>
+                            <TextBox MinWidth="100" Grid.Row="2" Grid.Column="1" Text="{Binding EthEurMinBidValue, Converter={StaticResource FloatConverter}, Mode=TwoWay}" />
+                            <TextBox MinWidth="100" Grid.Row="3" Grid.Column="1" Text="{Binding EthEurMaxBidValue, Converter={StaticResource FloatConverter}, Mode=TwoWay}" />
+
+                        </Grid>
+                        <Grid>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0" Grid.Column="0" FontSize="9" Content="Ask Qty"/>
+                                <Label Grid.Row="1" Grid.Column="0" FontSize="9" Content="Ask Avg"/>
+                                <Label Grid.Row="2" Grid.Column="0" FontSize="9" Content="Bid Qty"/>
+                                <Label Grid.Row="3" Grid.Column="0" FontSize="9" Content="Bid Avg"/>
+
+                                <TextBox MinWidth="100" Grid.Row="0" Grid.Column="1" Text="{Binding EthEurCurrentAvgPrice.TotalAskCoin, Converter={StaticResource FloatConverter}, Mode=TwoWay}" />
+                                <TextBox MinWidth="100" Grid.Row="1" Grid.Column="1" Text="{Binding EthEurCurrentAvgPrice.AvgAskCoinPrice, Converter={StaticResource FloatConverter}, Mode=TwoWay}"/>
+                                <TextBox MinWidth="100" Grid.Row="2" Grid.Column="1" Text="{Binding EthEurCurrentAvgPrice.TotalBidCoin, Converter={StaticResource FloatConverter}, Mode=TwoWay}" />
+                                <TextBox MinWidth="100" Grid.Row="3" Grid.Column="1" Text="{Binding EthEurCurrentAvgPrice.AvgBidCoinPrice, Converter={StaticResource FloatConverter}, Mode=TwoWay}" />
+                            </Grid>
+                        </Grid>
+                        <Grid >
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0" Grid.Column="0" FontSize="9" Content="Min Ask"/>
+                                <Label Grid.Row="1" Grid.Column="0" FontSize="9" Content="Max Ask"/>
+                                <Label Grid.Row="2" Grid.Column="0" FontSize="9" Content="Min Bid"/>
+                                <Label Grid.Row="3" Grid.Column="0" FontSize="9" Content="Max Bid"/>
+
+                                <TextBox MinWidth="100" Grid.Row="0" Grid.Column="1" Text="{Binding EthEurCurrentAvgPrice.MinAskCoinPrice, Converter={StaticResource FloatConverter}, Mode=TwoWay}" />
+                                <TextBox MinWidth="100" Grid.Row="1" Grid.Column="1" Text="{Binding EthEurCurrentAvgPrice.MaxAskCoinPrice, Converter={StaticResource FloatConverter}, Mode=TwoWay}"/>
+                                <TextBox MinWidth="100" Grid.Row="2" Grid.Column="1" Text="{Binding EthEurCurrentAvgPrice.MinBidCoinPrice, Converter={StaticResource FloatConverter}, Mode=TwoWay}" />
+                                <TextBox MinWidth="100" Grid.Row="3" Grid.Column="1" Text="{Binding EthEurCurrentAvgPrice.MaxBidCoinPrice, Converter={StaticResource FloatConverter}, Mode=TwoWay}" />
+                            </Grid>
+                        </Grid>
+
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                            <Label Content="Ask Filtered Wall"></Label>
+                            <syncfusion:SfDataGrid BorderThickness="0" BorderBrush="Transparent" AllowSorting="True" ColumnSizer="Auto" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch"  AutoGenerateColumns="False" ItemsSource="{Binding  EthEurCurrentAvgPrice.ask}" MinHeight="300" >
+                                <syncfusion:SfDataGrid.Columns>
+                                    <syncfusion:GridNumericColumn NumberDecimalDigits="7" HeaderText="Value" MappingName="price" />
+                                    <syncfusion:GridTextColumn HeaderText="Qty" MappingName="size" />
+                                    <syncfusion:GridTextColumn HeaderText="Impact" MappingName="PercentImpact" />
+                                    <syncfusion:GridNumericColumn NumberDecimalDigits="7" HeaderText="Total Value" MappingName="TotalValue" />
+
+                                </syncfusion:SfDataGrid.Columns>
+                            </syncfusion:SfDataGrid>
+
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                            <Label Content="Bid Filtered Wall"></Label>
+                            <syncfusion:SfDataGrid BorderThickness="0" BorderBrush="Transparent" AllowSorting="True" ColumnSizer="Auto" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch"  AutoGenerateColumns="False" ItemsSource="{Binding  EthEurCurrentAvgPrice.bid}" MinHeight="300" >
+                                <syncfusion:SfDataGrid.Columns>
+                                    <syncfusion:GridNumericColumn NumberDecimalDigits="7" HeaderText="Value" MappingName="price" />
+                                    <syncfusion:GridTextColumn HeaderText="Qty" MappingName="size" />
+                                    <syncfusion:GridTextColumn HeaderText="Impact" MappingName="PercentImpact" />
+                                    <syncfusion:GridNumericColumn NumberDecimalDigits="7" HeaderText="Total Value" MappingName="TotalValue" />
+
+                                </syncfusion:SfDataGrid.Columns>
+                            </syncfusion:SfDataGrid>
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+            </ContentControl>
+
+            <ItemsControl ItemsSource="{Binding MyOwnCoins}" syncfusion:DockingManager.State="Document" syncfusion:DockingManager.Header="My Coins">
+                <ItemsControl.Template>
+                    <ControlTemplate>
+                        <ScrollViewer x:Name="ScrollViewer" Padding="{TemplateBinding Padding}">
+                            <ItemsPresenter />
+                        </ScrollViewer>
+                    </ControlTemplate>
+                </ItemsControl.Template>
+                <!--<ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal"></StackPanel>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>-->
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+
+                        <StackPanel  Orientation="Vertical" VerticalAlignment="Stretch">
+                            <Label HorizontalAlignment="Center" Content="{Binding CoinSymbol}"/>
+                            <Label HorizontalAlignment="Center" Content="BTC"/>
+                            <StackPanel Orientation="Horizontal">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Grid.Row="0" Grid.Column="0" FontSize="9" Content="Min Ask"/>
+                                    <Label Grid.Row="1" Grid.Column="0" FontSize="9" Content="Max Ask"/>
+                                    <Label Grid.Row="2" Grid.Column="0" FontSize="9" Content="Min Bid"/>
+                                    <Label Grid.Row="3" Grid.Column="0" FontSize="9" Content="Max Bid"/>
+
+                                    <TextBox MinWidth="100" Grid.Row="0" Grid.Column="1" Text="{Binding BtcMinAskValue, Converter={StaticResource FloatConverter}, Mode=TwoWay}" />
+                                    <TextBox MinWidth="100" Grid.Row="1" Grid.Column="1" Text="{Binding BtcMaxAskValue, Converter={StaticResource FloatConverter}, Mode=TwoWay}"/>
+                                    <TextBox MinWidth="100" Grid.Row="2" Grid.Column="1" Text="{Binding BtcMinBidValue, Converter={StaticResource FloatConverter}, Mode=TwoWay}" />
+                                    <TextBox MinWidth="100" Grid.Row="3" Grid.Column="1" Text="{Binding BtcMaxBidValue, Converter={StaticResource FloatConverter}, Mode=TwoWay}" />
+
+                                </Grid>
+                                <Grid>
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition/>
+                                            <RowDefinition/>
+                                            <RowDefinition/>
+                                            <RowDefinition/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition/>
+                                        </Grid.ColumnDefinitions>
+                                        <Label Grid.Row="0" Grid.Column="0" FontSize="9" Content="Ask Qty"/>
+                                        <Label Grid.Row="1" Grid.Column="0" FontSize="9" Content="Ask Avg"/>
+                                        <Label Grid.Row="2" Grid.Column="0" FontSize="9" Content="Bid Qty"/>
+                                        <Label Grid.Row="3" Grid.Column="0" FontSize="9" Content="Bid Avg"/>
+
+                                        <TextBox MinWidth="100" Grid.Row="0" Grid.Column="1" Text="{Binding CurrentBtcMarketData.TotalAskCoin, Converter={StaticResource FloatConverter}, Mode=TwoWay}" />
+                                        <TextBox MinWidth="100" Grid.Row="1" Grid.Column="1" Text="{Binding CurrentBtcMarketData.AvgAskCoinPrice, Converter={StaticResource FloatConverter}, Mode=TwoWay}"/>
+                                        <TextBox MinWidth="100" Grid.Row="2" Grid.Column="1" Text="{Binding CurrentBtcMarketData.TotalBidCoin, Converter={StaticResource FloatConverter}, Mode=TwoWay}" />
+                                        <TextBox MinWidth="100" Grid.Row="3" Grid.Column="1" Text="{Binding CurrentBtcMarketData.AvgBidCoinPrice, Converter={StaticResource FloatConverter}, Mode=TwoWay}" />
+                                    </Grid>
+                                </Grid>
+                                <Grid>
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition/>
+                                            <RowDefinition/>
+                                            <RowDefinition/>
+                                            <RowDefinition/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition/>
+                                        </Grid.ColumnDefinitions>
+                                        <Label Grid.Row="0" Grid.Column="0" FontSize="9" Content="Min Ask"/>
+                                        <Label Grid.Row="1" Grid.Column="0" FontSize="9" Content="Max Ask"/>
+                                        <Label Grid.Row="2" Grid.Column="0" FontSize="9" Content="Min Bid"/>
+                                        <Label Grid.Row="3" Grid.Column="0" FontSize="9" Content="Max Bid"/>
+
+                                        <TextBox MinWidth="100" Grid.Row="0" Grid.Column="1" Text="{Binding CurrentBtcMarketData.MinAskCoinPrice, Converter={StaticResource FloatConverter}, Mode=TwoWay}" />
+                                        <TextBox MinWidth="100" Grid.Row="1" Grid.Column="1" Text="{Binding CurrentBtcMarketData.MaxAskCoinPrice, Converter={StaticResource FloatConverter}, Mode=TwoWay}"/>
+                                        <TextBox MinWidth="100" Grid.Row="2" Grid.Column="1" Text="{Binding CurrentBtcMarketData.MinBidCoinPrice, Converter={StaticResource FloatConverter}, Mode=TwoWay}" />
+                                        <TextBox MinWidth="100" Grid.Row="3" Grid.Column="1" Text="{Binding CurrentBtcMarketData.MaxBidCoinPrice, Converter={StaticResource FloatConverter}, Mode=TwoWay}" />
+                                    </Grid>
+                                </Grid>
+
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                    <Label Content="Ask Filtered Wall"></Label>
+                                    <syncfusion:SfDataGrid BorderThickness="0" BorderBrush="Transparent" AllowSorting="True" ColumnSizer="Auto" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch"  AutoGenerateColumns="False" ItemsSource="{Binding  CurrentBtcMarketData.ask}" MinHeight="300" >
+                                        <syncfusion:SfDataGrid.Columns>
+                                            <syncfusion:GridNumericColumn NumberDecimalDigits="7" HeaderText="Value" MappingName="price" />
+                                            <syncfusion:GridTextColumn HeaderText="Qty" MappingName="size" />
+                                            <syncfusion:GridTextColumn HeaderText="Impact" MappingName="PercentImpact" />
+                                            <syncfusion:GridNumericColumn NumberDecimalDigits="7" HeaderText="Total Value" MappingName="TotalValue" />
+
+                                        </syncfusion:SfDataGrid.Columns>
+                                    </syncfusion:SfDataGrid>
+
+                                </StackPanel>
+                                <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                    <Label Content="Bid Filtered Wall"></Label>
+                                    <syncfusion:SfDataGrid BorderThickness="0" BorderBrush="Transparent" AllowSorting="True" ColumnSizer="Auto" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch"  AutoGenerateColumns="False" ItemsSource="{Binding  CurrentBtcMarketData.bid}" MinHeight="300" >
+                                        <syncfusion:SfDataGrid.Columns>
+                                            <syncfusion:GridNumericColumn NumberDecimalDigits="7" HeaderText="Value" MappingName="price" />
+                                            <syncfusion:GridTextColumn HeaderText="Qty" MappingName="size" />
+                                            <syncfusion:GridTextColumn HeaderText="Impact" MappingName="PercentImpact" />
+                                            <syncfusion:GridNumericColumn NumberDecimalDigits="7" HeaderText="Total Value" MappingName="TotalValue" />
+
+                                        </syncfusion:SfDataGrid.Columns>
+                                    </syncfusion:SfDataGrid>
+                                </StackPanel>
+                            </StackPanel>
+                        </StackPanel>
+
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+        </syncfusion:DockingManager>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Left">
+            <Rectangle VerticalAlignment="Center" RadiusX="20" RadiusY="20" Width="10" Height="10" Fill="{Binding ConnectionInitialized, Converter={StaticResource TrueGreenConverter}}" ></Rectangle>
+            <Label VerticalAlignment="Center" Content="Initialized" Margin="0,0,5,0"></Label>
+            <Rectangle VerticalAlignment="Center" RadiusX="20" RadiusY="20" Width="10" Height="10" Fill="{Binding IsSocketReady, Converter={StaticResource TrueGreenConverter}}" ></Rectangle>
+            <Label VerticalAlignment="Center" Content="Socket Ready" Margin="0,0,5,0"></Label>
+            <Label VerticalAlignment="Center" Content="Last Message:"></Label>
+            <Label VerticalAlignment="Center" Content="{Binding LastMessage, StringFormat='\{0:dd/MM/yyyy HH:mm:ss\}'}" Margin="0,0,5,0"></Label>
+
+        </StackPanel>
+    </Grid>
+
+</syncfusion:ChromelessWindow>
+
+
+
+
+
+

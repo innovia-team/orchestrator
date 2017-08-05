@@ -1,0 +1,11 @@
+﻿<Application x:Class="HitBtcOrchestrator.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:HitBtcOrchestrator"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+
+        <local:FloatCustomConverter x:Key="FloatConverter" />
+        <local:TrueGreenConverter x:Key="TrueGreenConverter" />
+    </Application.Resources>
+</Application>
